@@ -12,15 +12,15 @@ export class AppComponent {
   sourceList: Satellite[];
   constructor() {
     this.sourceList = [];
-    let satellitesUrl = 'https://handlers.education.launchcode.org/static/satellites.json';
+    const satellitesUrl = 'https://handlers.education.launchcode.org/static/satellites.json';
 
-    window.fetch(satellitesUrl).then(function (response) {
-      response.json().then(function (data) {
-        let fetchedSatellites = data.satellites;
+    window.fetch(satellitesUrl).then(function(response) {
+      response.json().then(function(data) {
+        const fetchedSatellites = data.satellites;
         for (let i = 0; i < fetchedSatellites.length; i++) {
-      let newsatellite = new Satellite(fetchedSatellites[i].name, fetchedSatellites[i].type,
+      const newsatellite = new Satellite(fetchedSatellites[i].name, fetchedSatellites[i].type,
           fetchedSatellites[i].launchDate, fetchedSatellites[i].orbitType, fetchedSatellites[i].operational);
-        this.sourceList.push(newsatellite);
+      this.sourceList.push(newsatellite);
       }
       }.bind(this));
     }.bind(this));
